@@ -1,11 +1,413 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>我的 GitHub Pages 首页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiayi Hui - Portfolio</title>
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --date-color: #7f8c8d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sections */
+        section {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Job/School Entries */
+        .entry {
+            margin-bottom: 25px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .entry-location {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .entry-date {
+            color: var(--date-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .entry-subtitle {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #555;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #eef2f7;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #e1e8ed;
+        }
+
+        .skill-category {
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 80px;
+        }
+
+        /* Publications */
+        .pub-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .entry-header {
+                flex-direction: column;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello GitHub Pages!</h1>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <h1>Jiayi Hui</h1>
+        <div class="subtitle">Statistics MSc Candidate & Data Science Researcher</div>
+        <div class="contact-info">
+            <span><i class="fas fa-map-marker-alt"></i> Pokfulam, Hong Kong</span>
+            <a href="mailto:jiayi.hui@connect.hku.hk"><i class="fas fa-envelope"></i> jiayi.hui@connect.hku.hk</a>
+            <span><i class="fas fa-phone"></i> (852) 6538 4353</span>
+            <a href="https://scratch-colossus-cf5.notion.site/Jiayi-Hui-ea1b4aa70d0e47749e9024b4a097648f" target="_blank"><i class="fas fa-link"></i> Notion Profile</a>
+        </div>
+    </header>
+
+    <!-- Education -->
+    <section>
+        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+        
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">The University of Hong Kong</span>
+                <span class="entry-date">Sep 2025 – Jun 2026 (Expected)</span>
+            </div>
+            <div class="entry-location">Master of Science: Statistics</div>
+            <ul>
+                <li><strong>Fields:</strong> Advanced Statistical Modelling, Computational Statistics and Bayesian Learning, Quantum Computing and AI</li>
+                <li><strong>Role:</strong> Chair, WEGYA Global SDGs Hub@HKU (Sep 2025 - Present)</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Renmin University of China</span>
+                <span class="entry-date">Sep 2019 – Jun 2023</span>
+            </div>
+            <div class="entry-location">Bachelor of Economics: Economic Statistics (GPA: 3.39/4.0)</div>
+            <ul>
+                <li><strong>Core Courses:</strong> Intermediate Microeconomics (95), Big Data Analytics (94), Applied Time Series Analysis (92), Statistical Computing (92), Econometrics (92).</li>
+                <li><strong>Honors:</strong> Excellent Undergraduate Thesis (Top 3%), 1st-class Scholarship of Academic Excellence (Top 5%), 1st Prize "Innovation Cup" (Top 5%), Provincial 2nd Prize Math Modeling (Top 20%).</li>
+                <li><strong>Leadership:</strong> Chair, Dancesport Association; Director, Training & Evaluation Dept.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+        <h2><i class="fas fa-code"></i> Technical Skills</h2>
+        <div class="skills-container">
+            <span class="skill-tag">Python (Pandas, Scikit-learn, PyTorch, NumPy)</span>
+            <span class="skill-tag">R Language</span>
+            <span class="skill-tag">SQL Server</span>
+            <span class="skill-tag">Data Visualization (Matplotlib, Seaborn, ggplot2)</span>
+            <span class="skill-tag">Time Series (ARIMA, ECM)</span>
+            <span class="skill-tag">Econometrics (OLS, 2SLS)</span>
+            <span class="skill-tag">Unix & Git</span>
+            <span class="skill-tag">C/C++ Basic</span>
+            <span class="skill-tag">IELTS 7.5</span>
+        </div>
+    </section>
+
+    <!-- Research Experience -->
+    <section>
+        <h2><i class="fas fa-flask"></i> Research Experience</h2>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Measuring Reusability of Research Data</span>
+                <span class="entry-date">May 2023 – Aug 2025</span>
+            </div>
+            <span class="entry-subtitle">National Natural Science Foundation of China | Supervised by Dr. Lili Zhang</span>
+            <ul>
+                <li><strong>Data & Algo:</strong> Built Scientometrics datasets; Designed "citation extension index" algorithm integrating intensity and spatiotemporal dynamics.</li>
+                <li><strong>Analysis:</strong> Used PIE, Shannon entropy, Immediacy Index, and half-life period to quantify data obsolescence.</li>
+                <li><strong>Impact:</strong> Validated algorithm on 2208 citing articles; demonstrated high feasibility for predicting citation landscape changes. Lead to a patent.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Data Characteristics Affecting Levels of Openness</span>
+                <span class="entry-date">May 2023 – Aug 2025</span>
+            </div>
+            <span class="entry-subtitle">CAS President's International Fellowship Initiative</span>
+            <ul>
+                <li>Examined reliability of data openness metrics (5-scale); Distributed questionnaires to 34 international experts.</li>
+                <li>Visualized results using Nightingale rose graphs to display scale measurement insights.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Massive Cross-domain Remote Sensing Data</span>
+                <span class="entry-date">Oct 2024 – Dec 2024</span>
+            </div>
+            <span class="entry-subtitle">National Key R&D Program of China</span>
+            <ul>
+                <li>Designed Data Pricing Models (Stackelberg-game, cost/income accounting) for remote sensing data products to facilitate data governance.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">National Data Infrastructure Construction</span>
+                <span class="entry-date">Mar 2025 – Aug 2025</span>
+            </div>
+            <span class="entry-subtitle">Key Program of National Data Administration</span>
+            <ul>
+                <li>Designed multi-subject operation structure (construction-operation-supervision) and identified key risk management priorities.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section>
+        <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+        
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Research Assistant</span>
+                <span class="entry-date">May 2023 – Aug 2025</span>
+            </div>
+            <div class="entry-location">Computer Network Information Center, CAS (Beijing)</div>
+            <ul>
+                <li><strong>Data Management:</strong> Managed full lifecycle of research data ensuring FAIRness. Transformed raw data into actionable insights.</li>
+                <li><strong>International Cooperation:</strong> Facilitated workshops on Big Data/SDGs; Promoted FAIR principles in Chinese scientific communities; Engaged in UN/ISC dialogues (UNESCO, CODATA).</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">AI Agent Development and Testing Specialist</span>
+                <span class="entry-date">Mar 2025 – Jul 2025</span>
+            </div>
+            <div class="entry-location">PINE AI (San Francisco, Remote)</div>
+            <ul>
+                <li><strong>RAG Optimization:</strong> Improved retrieval precision from 90.26% to 99.07% by combining vector/keyword indexing and refining prompts.</li>
+                <li><strong>Evaluation:</strong> Designed "Authentication × Customization" assessment coordinates and produced retrieval reliability reports.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Publications & Patents -->
+    <section>
+        <h2><i class="fas fa-book"></i> Publications & Patents</h2>
+        
+        <div class="entry">
+            <span class="entry-subtitle">Journal Papers</span>
+            <div class="pub-item">
+                [1] ZHANG Lili, <strong>HUI Jiayi</strong>, LIU Ruilin. Exploring citation metrics of data papers: case studies based on two Chinese data journals[J]. <em>China Scientific Data</em>, 2024, 9(1).
+            </div>
+            <div class="pub-item">
+                [2] HU Yike, ZHANG Lili, <strong>HUI Jiayi</strong>, LIU Ruilin. A citation text automatic extraction method and a sample citation corpus dataset[J]. <em>China Scientific Data</em>, 2024, 9(4).
+            </div>
+        </div>
+
+        <div class="entry">
+            <span class="entry-subtitle">Manuscripts & Patents</span>
+            <div class="pub-item">
+                [Patent] ZHANG Lili, HU Yike, <strong>HUI Jiayi</strong>. A measurement method on the reusability of data publications. CN 118897986A (Under Substantive Examination).
+            </div>
+            <div class="pub-item">
+                [Manuscript] ZHANG Lili, LIU Ruilin, <strong>HUI Jiayi</strong>. Characterized data reusability through extensible citation framework (Under Major Revision by Scientometrics).
+            </div>
+        </div>
+    </section>
+    
+    <!-- Conferences -->
+    <section>
+        <h2><i class="fas fa-microphone"></i> Conferences</h2>
+        <ul>
+            <li><strong>The CODATA-RDA Schools of Research Data Science (2024, Italy):</strong> Oral Presentation on data paper academic influence.</li>
+            <li><strong>The CODATA-RDA Advanced Workshops (2024, Italy):</strong> Oral Presentation on FAIR principles.</li>
+            <li><strong>International Training Workshop on Open Science (2023, Beijing):</strong> Oral Presentation on SDGs & Open Science.</li>
+        </ul>
+    </section>
+
+    <footer style="text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 50px; padding-bottom: 20px;">
+        <p>&copy; 2025 Jiayi Hui. Hosted on GitHub Pages.</p>
+    </footer>
+</div>
+
 </body>
 </html>
-
