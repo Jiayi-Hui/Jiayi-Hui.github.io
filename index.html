@@ -3,401 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiayi Hui - Portfolio</title>
-    <!-- 引入字体图标 -->
+    <title>Jiayi Hui | Researcher & Statistician</title>
+    <!-- 引入高级字体 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- 引入图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --card-bg: #ffffff;
-            --date-color: #7f8c8d;
+            --sidebar-bg: #1a2a3a; /* 深海军蓝，稳重专业 */
+            --sidebar-text: #ffffff;
+            --main-bg: #ffffff;
+            --text-color: #2c3e50;
+            --accent-color: #3498db; /* 亮蓝点缀 */
+            --border-color: #e0e0e0;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f2f5;
             color: var(--text-color);
-            background-color: var(--bg-color);
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* Header Section */
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .contact-info {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .contact-info a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s;
+        /* 主容器 */
+        .wrapper {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            margin: 0 auto; /* 大屏居中 */
         }
 
-        .contact-info a:hover {
-            color: var(--accent-color);
+        /* --- 左侧侧边栏 --- */
+        aside {
+            width: 320px;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 40px 30px;
+            flex-shrink: 0;
+            text-align: left;
         }
 
-        /* Sections */
-        section {
-            background: var(--card-bg);
-            padding: 30px;
+        /* 头像处理 - 自动裁剪 */
+        .profile-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.2);
+            overflow: hidden; /* 关键：超出圆形的部分隐藏 */
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 关键：保持比例填满 */
+            object-position: top center; /* 关键：定位到上半身，避免只显示肚子 */
+        }
+
+        aside h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        aside .title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2 i {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-        }
-
-        /* Job/School Entries */
-        .entry {
-            margin-bottom: 25px;
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 5px;
-            flex-wrap: wrap;
-        }
-
-        .entry-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #2c3e50;
-        }
-
-        .entry-location {
-            font-style: italic;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .entry-date {
-            color: var(--date-color);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .entry-subtitle {
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 8px;
+            text-align: center;
             display: block;
         }
 
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            color: #555;
-        }
-
-        li {
-            margin-bottom: 6px;
-        }
-
-        /* Skills Tags */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background-color: #eef2f7;
-            color: var(--primary-color);
-            padding: 6px 12px;
-            border-radius: 20px;
+        .contact-list {
+            list-style: none;
+            margin-bottom: 40px;
             font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid #e1e8ed;
         }
 
-        .skill-category {
-            font-weight: bold;
+        .contact-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-list i {
+            width: 25px;
+            color: var(--accent-color);
             margin-right: 10px;
-            min-width: 80px;
         }
 
-        /* Publications */
+        .contact-list a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-list a:hover { opacity: 0.7; }
+
+        .sidebar-section { margin-bottom: 40px; }
+        .sidebar-title {
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .skills-tags span {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            margin: 0 5px 8px 0;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* --- 右侧主要内容 --- */
+        main {
+            flex-grow: 1;
+            padding: 50px 60px;
+            background-color: #fff;
+        }
+
+        section { margin-bottom: 50px; }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a2a3a;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        /* 经历条目 */
+        .item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .item-org {
+            font-size: 1.1rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        .item-date {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .item ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .item li { margin-bottom: 5px; color: #555; }
+
+        /* 论文样式 */
         .pub-item {
             margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid var(--accent-color);
+            padding: 10px 15px;
+            background: #f9f9f9;
+            border-left: 3px solid #ccc;
         }
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            transition: background 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .entry-header {
-                flex-direction: column;
-            }
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* 响应式设计 - 手机端适配 */
+        @media (max-width: 768px) {
+            .wrapper { flex-direction: column; }
+            aside { width: 100%; text-align: center; padding: 40px 20px; }
+            .contact-list li { justify-content: center; }
+            main { padding: 30px 20px; }
+            .item-header { flex-direction: column; }
+            .profile-container { width: 150px; height: 150px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Header -->
-    <header>
+<div class="wrapper">
+    <!-- 左侧栏：个人信息 -->
+    <aside>
+        <div class="profile-container">
+            <!-- 这里的 photo.jpg 就是你需要上传到 GitHub 的文件 -->
+            <img src="photo.jpg" alt="Jiayi Hui" class="profile-img">
+        </div>
+        
         <h1>Jiayi Hui</h1>
-        <div class="subtitle">MStat in HKU</div>
-        <div class="contact-info">
-            <span><i class="fas fa-map-marker-alt"></i> Pokfulam, Hong Kong</span>
-            <a href="mailto:jiayi.hui@connect.hku.hk"><i class="fas fa-envelope"></i> jiayi.hui@connect.hku.hk</a>
-            <span><i class="fas fa-phone"></i> (852) 6538 4353</span>
-            <a href="https://scratch-colossus-cf5.notion.site/Jiayi-Hui-ea1b4aa70d0e47749e9024b4a097648f" target="_blank"><i class="fas fa-link"></i> Notion Profile</a>
-        </div>
-    </header>
+        <span class="title">MSc in Statistics @ HKU<br>Researcher & Data Scientist</span>
 
-    <!-- Education -->
-    <section>
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">The University of Hong Kong</span>
-                <span class="entry-date">Sep 2025 – Jun 2026 (Expected)</span>
-            </div>
-            <div class="entry-location">Master of Science: Statistics</div>
-        </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Renmin University of China</span>
-                <span class="entry-date">Sep 2019 – Jun 2023</span>
-            </div>
-            <div class="entry-location">Bachelor of Economics: Economic Statistics </div>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section>
-        <h2><i class="fas fa-code"></i> Technical Skills</h2>
-        <div class="skills-container">
-            <span class="skill-tag">Python (Pandas, Scikit-learn, PyTorch, NumPy)</span>
-            <span class="skill-tag">R</span>
-            <span class="skill-tag">SQL Server</span>
-            <span class="skill-tag">Data Visualization (Matplotlib, Seaborn, ggplot2)</span>
-            <span class="skill-tag">Time Series (ARIMA, ECM)</span>
-            <span class="skill-tag">Econometrics (OLS, 2SLS)</span>
-            <span class="skill-tag">Unix & Git</span>
-            <span class="skill-tag">C/C++ Basic</span>
-            <span class="skill-tag">IELTS 7.5</span>
-        </div>
-    </section>
-
-    <!-- Research Experience -->
-    <section>
-        <h2><i class="fas fa-flask"></i> Research Experience</h2>
-
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Measuring Reusability of Research Data</span>
-                <span class="entry-date">May 2023 – Aug 2025</span>
-            </div>
-            <span class="entry-subtitle">National Natural Science Foundation of China | Supervised by Dr. Lili Zhang</span>
-            <ul>
-                <li><strong>Data & Algo:</strong> Built Scientometrics datasets; Designed "citation extension index" algorithm integrating intensity and spatiotemporal dynamics.</li>
-                <li><strong>Analysis:</strong> Used PIE, Shannon entropy, Immediacy Index, and half-life period to quantify data obsolescence.</li>
-                <li><strong>Impact:</strong> Validated algorithm on 2208 citing articles; demonstrated high feasibility for predicting citation landscape changes. Lead to a patent.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Data Characteristics Affecting Levels of Openness</span>
-                <span class="entry-date">May 2023 – Aug 2025</span>
-            </div>
-            <span class="entry-subtitle">CAS President's International Fellowship Initiative</span>
-            <ul>
-                <li>Examined reliability of data openness metrics (5-scale); Distributed questionnaires to 34 international experts.</li>
-                <li>Visualized results using Nightingale rose graphs to display scale measurement insights.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Massive Cross-domain Remote Sensing Data</span>
-                <span class="entry-date">Oct 2024 – Dec 2024</span>
-            </div>
-            <span class="entry-subtitle">National Key R&D Program of China</span>
-            <ul>
-                <li>Designed Data Pricing Models (Stackelberg-game, cost/income accounting) for remote sensing data products to facilitate data governance.</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">National Data Infrastructure Construction</span>
-                <span class="entry-date">Mar 2025 – Aug 2025</span>
-            </div>
-            <span class="entry-subtitle">Key Program of National Data Administration</span>
-            <ul>
-                <li>Designed multi-subject operation structure (construction-operation-supervision) and identified key risk management priorities.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Work Experience -->
-    <section>
-        <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-        
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">Research Assistant</span>
-                <span class="entry-date">May 2023 – Aug 2025</span>
-            </div>
-            <div class="entry-location">Computer Network Information Center, CAS (Beijing)</div>
-            <ul>
-                <li><strong>Data Management:</strong> Managed full lifecycle of research data ensuring FAIRness. Transformed raw data into actionable insights.</li>
-                <li><strong>International Cooperation:</strong> Facilitated workshops on Big Data/SDGs; Promoted FAIR principles in Chinese scientific communities; Engaged in UN/ISC dialogues (UNESCO, CODATA).</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-header">
-                <span class="entry-title">AI Agent Development and Testing Specialist</span>
-                <span class="entry-date">Mar 2025 – Jul 2025</span>
-            </div>
-            <div class="entry-location">PINE AI (San Francisco, Remote)</div>
-            <ul>
-                <li><strong>RAG Optimization:</strong> Improved retrieval precision from 90.26% to 99.07% by combining vector/keyword indexing and refining prompts.</li>
-                <li><strong>Evaluation:</strong> Designed "Authentication × Customization" assessment coordinates and produced retrieval reliability reports.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Publications & Patents -->
-    <section>
-        <h2><i class="fas fa-book"></i> Publications & Patents</h2>
-        
-        <div class="entry">
-            <span class="entry-subtitle">Journal Papers</span>
-            <div class="pub-item">
-                [1] ZHANG Lili, <strong>HUI Jiayi</strong>, LIU Ruilin. Exploring citation metrics of data papers: case studies based on two Chinese data journals[J]. <em>China Scientific Data</em>, 2024, 9(1).
-            </div>
-            <div class="pub-item">
-                [2] HU Yike, ZHANG Lili, <strong>HUI Jiayi</strong>, LIU Ruilin. A citation text automatic extraction method and a sample citation corpus dataset[J]. <em>China Scientific Data</em>, 2024, 9(4).
-            </div>
-        </div>
-
-        <div class="entry">
-            <span class="entry-subtitle">Manuscripts & Patents</span>
-            <div class="pub-item">
-                [Patent] ZHANG Lili, HU Yike, <strong>HUI Jiayi</strong>. A measurement method on the reusability of data publications. CN 118897986A (Under Substantive Examination).
-            </div>
-            <div class="pub-item">
-                [Manuscript] ZHANG Lili, LIU Ruilin, <strong>HUI Jiayi</strong>. Characterized data reusability through extensible citation framework (Under Major Revision by Scientometrics).
-            </div>
-        </div>
-    </section>
-    
-    <!-- Conferences -->
-    <section>
-        <h2><i class="fas fa-microphone"></i> Conferences</h2>
-        <ul>
-            <li><strong>The CODATA-RDA Schools of Research Data Science (2024, Italy):</strong> Oral Presentation.</li>
-            <li><strong>The CODATA-RDA Advanced Workshops (2024, Italy):</strong> Oral Presentation.</li>
-            <li><strong>International Training Workshop on Open Science (2023, Beijing):</strong> Oral Presentation.</li>
+        <ul class="contact-list">
+            <li><i class="fas fa-map-marker-alt"></i> Pokfulam, Hong Kong</li>
+            <li><a href="mailto:jiayi.hui@connect.hku.hk"><i class="fas fa-envelope"></i> jiayi.hui@connect.hku.hk</a></li>
+            <li><i class="fas fa-phone"></i> (852) 6538 4353</li>
+            <li><a href="https://scratch-colossus-cf5.notion.site/Jiayi-Hui-ea1b4aa70d0e47749e9024b4a097648f" target="_blank"><i class="fas fa-link"></i> Notion Portfolio</a></li>
         </ul>
-    </section>
 
-    <footer style="text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-top: 50px; padding-bottom: 20px;">
-        <p>&copy; 2025 Jiayi Hui. Hosted on GitHub Pages.</p>
-    </footer>
+        <div class="sidebar-section">
+            <div class="sidebar-title">SKILLS</div>
+            <div class="skills-tags">
+                <span>Python (PyTorch/Pandas)</span>
+                <span>R & Stata</span>
+                <span>SQL Server</span>
+                <span>Data Visualization</span>
+                <span>Econometrics</span>
+                <span>Machine Learning</span>
+                <span>IELTS 7.5</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">EDUCATION</div>
+            <div style="margin-bottom: 15px;">
+                <strong style="color:white; display:block;">The University of Hong Kong</strong>
+                <span style="font-size:0.85rem; opacity:0.7;">MSc Statistics (2025-2026)</span>
+            </div>
+            <div>
+                <strong style="color:white; display:block;">Renmin Univ. of China</strong>
+                <span style="font-size:0.85rem; opacity:0.7;">BEc Statistics (2019-2023)</span>
+                <span style="font-size:0.8rem; display:block; margin-top:5px; opacity:0.6;">GPA: 3.39/4.0 | Top 3% Thesis</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 右侧栏：详细经历 -->
+    <main>
+        <!-- 科研经历 -->
+        <section>
+            <h2>Research Experience</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Measuring Reusability of Research Data</span>
+                    <span class="item-date">May 2023 – Aug 2025</span>
+                </div>
+                <div class="item-org">National Natural Science Foundation of China (NSFC)</div>
+                <div class="item-desc">
+                    Supervised by Dr. Lili Zhang
+                    <ul>
+                        <li><strong>Algorithm:</strong> Designed "citation extension index" algorithm integrating spatiotemporal dynamics, leading to a patent.</li>
+                        <li><strong>Impact:</strong> Validated on 2208 articles; proved high feasibility for predicting citation landscape changes.</li>
+                        <li><strong>Visualization:</strong> Created impactful charts using Python/R to communicate findings on Open Science.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Data Characteristics & Openness</span>
+                    <span class="item-date">May 2023 – Aug 2025</span>
+                </div>
+                <div class="item-org">CAS President's International Fellowship Initiative</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Distributed questionnaires to 34 international experts to examine data openness metrics.</li>
+                        <li>Visualized results using Nightingale rose graphs to display scale measurement insights.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工作经历 -->
+        <section>
+            <h2>Work Experience</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Research Assistant</span>
+                    <span class="item-date">May 2023 – Aug 2025</span>
+                </div>
+                <div class="item-org">Computer Network Information Center, CAS (Beijing)</div>
+                <div class="item-desc">
+                    <ul>
+                        <li><strong>International Dialogues:</strong> Engaged in discussions with UNESCO, CODATA, and IRDR on Open Science & SDGs.</li>
+                        <li><strong>Project Management:</strong> Coordinated team efforts and facilitated workshops on Big Data for the Global South.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">AI Agent Development Specialist</span>
+                    <span class="item-date">Mar 2025 – Jul 2025</span>
+                </div>
+                <div class="item-org">PINE AI (San Francisco, Remote)</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Optimized RAG retrieval precision from 90.26% to 99.07% by combining vector indexing and prompt engineering.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 论文与发表 -->
+        <section>
+            <h2>Publications & Patents</h2>
+            <div class="pub-item">
+                <strong>[Patent]</strong> ZHANG Lili, HU Yike, <strong>HUI Jiayi</strong>. A measurement method on the reusability of data publications. CN 118897986A.
+            </div>
+            <div class="pub-item">
+                <strong>[Journal]</strong> ZHANG Lili, <strong>HUI Jiayi</strong>, LIU Ruilin. Exploring citation metrics of data papers. <em>China Scientific Data</em>, 2024.
+            </div>
+            <div class="pub-item">
+                <strong>[Conference]</strong> The CODATA-RDA Schools of Research Data Science (Trieste, Italy, 2024) - Oral Presentation.
+            </div>
+        </section>
+
+        <!-- 底部 -->
+        <footer style="text-align:center; color:#999; font-size:0.8rem; margin-top:50px; border-top:1px solid #eee; padding-top:20px;">
+            &copy; 2025 Jiayi Hui. Hosted on GitHub Pages.
+        </footer>
+    </main>
 </div>
 
 </body>
